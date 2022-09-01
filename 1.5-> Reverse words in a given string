@@ -1,0 +1,43 @@
+
+Example 1:
+
+Input:
+------
+S = i.like.this.program.very.much
+Output: much.very.program.this.like.i
+Explanation: After reversing the whole
+string(not individual words), the input
+string becomes
+much.very.program.this.like.i
+Example 2:
+
+Input:
+-----
+S = pqr.mno
+Output: mno.pqr
+Explanation: After reversing the whole
+string , the input string becomes
+mno.pqr
+
+string reverseWords(string S) 
+    { 
+        string ans = "";
+        string word = "";
+        
+        for(int i=S.length()-1;i>=0;i--){
+            if(S[i]=='.'){
+                reverse(word.begin(),word.end());
+                ans = ans + word;
+                ans = ans + '.';
+                word="";
+            }
+            else{
+                word.push_back(S[i]);
+            }
+            
+        }
+        
+        reverse(word.begin(),word.end());
+        ans = ans + word;
+        return ans;
+    } 
