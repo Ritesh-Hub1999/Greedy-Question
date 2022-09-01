@@ -1,0 +1,46 @@
+https://practice.geeksforgeeks.org/problems/check-if-it-is-possible-to-survive-on-island4922/1
+
+Example 1:
+---------
+Input:
+N = 8, M = 5
+A = {3, 4, 1, 9, 56, 7, 9, 12}
+Output: 6
+Explanation: The minimum difference between 
+maximum chocolates and minimum chocolates 
+is 9 - 3 = 6 by choosing following M packets :
+{3, 4, 9, 7, 9}.
+
+Example 2:
+----------
+Input:
+N = 7, M = 3
+A = {7, 3, 2, 4, 9, 12, 56}
+Output: 2
+Explanation: The minimum difference between
+maximum chocolates and minimum chocolates
+is 4 - 2 = 2 by choosing following M packets :
+{3, 2, 4}.
+
+code:
+-----
+long long findMinDiff(vector<long long> a, long long n, long long m){
+    //code
+    
+    //sort
+    sort(a.begin(),a.end());
+    int i = 0;
+    int j = m-1;
+    
+    long long mini = INT_MAX;
+    
+    while(j < a.size()){
+        long long minChoc = a[i];
+        long long maxChoc = a[j];
+        long long diff = maxChoc - minChoc;
+        mini = min(mini,diff);
+        i++;
+        j++;
+    }
+    return mini;
+    } 
