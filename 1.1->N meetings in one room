@@ -66,3 +66,32 @@ code:
         
         return count;
     }
+
+
+code:
+-----
+int maxMeetings(int start[], int end[], int n)
+    {
+        //step1: make the pair with end time and start time
+        vector<pair<int,int>>pair;
+        int countMeeting = 1;
+        
+        for(int i=0;i<n;i++){
+            pair.push_back({end[i],start[i]});
+        }
+        
+        //step2 : sort the array
+        sort(pair.begin(),pair.end());
+        
+        //step 3 :compare the prev meeting end time should be less than curr meeting start time
+        int prevMeetingEndTime = pair[0].first;
+        
+        for(int i=0;i<n;i++){
+            if(prevMeetingEndTime < pair[i].second){
+                prevMeetingEndTime = pair[i].first;
+                countMeeting++;
+            }
+        }
+        
+        return countMeeting;
+    }
